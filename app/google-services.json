@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "776095309122",
+    "firebase_url": "https://rocket-app-7afbb.firebaseio.com",
+    "project_id": "rocket-app-7afbb",
+    "storage_bucket": "rocket-app-7afbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776095309122:android:e11c00db07e049a3",
+        "android_client_info": {
+          "package_name": "com.chuongvd.app.signal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776095309122-sub7h6140o3vgv9uu99qeak2fatt0uie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chuongvd.app.signal",
+            "certificate_hash": "0353aabc21fce988936eee838b03e0700e7ed2ec"
+          }
+        },
+        {
+          "client_id": "776095309122-jk6d2mf6s0ej6eka925huf871ntdaoru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl2w4LurX4rMmmB1bUtFeEWWiPTeTTR1Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776095309122-jk6d2mf6s0ej6eka925huf871ntdaoru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
