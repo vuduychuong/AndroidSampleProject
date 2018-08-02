@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomViewPager">
+        <attr format="boolean" name="is_disable_smooth"/>
+        <attr format="boolean" name="is_disable_swipe"/>
+    </declare-styleable>
+</resources>

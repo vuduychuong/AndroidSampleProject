@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <import type="com.chuongvd.app.signal.constant.BottomNavigation"/>
+        <variable
+            name="itemSelected"
+            type="int"
+            />
+        <variable
+            name="listener"
+            type="com.chuongvd.app.signal.listener.BottomNavigationListener"
+            />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/auto_dp_4"
+        >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/auto_dp_1"
+            android:background="@android:color/darker_gray"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <include
+                layout="@layout/item_bottom_navigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:clickListener="@{ (v) -> listener.onClickHome(v) }"
+                app:imgSrc="@{ itemSelected == BottomNavigation.SIGNAL ? @drawable/ic_bar_chart : @drawable/ic_bar_chart }"
+                app:isSelected="@{ itemSelected == BottomNavigation.SIGNAL }"
+                app:title="@{ @string/navigation_signal }"
+                />
+            <include
+                layout="@layout/item_bottom_navigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:clickListener="@{ (v) -> listener.onClickChart(v) }"
+                app:imgSrc="@{ itemSelected == BottomNavigation.CHART ? @drawable/ic_bar_chart : @drawable/ic_bar_chart }"
+                app:isSelected="@{ itemSelected == BottomNavigation.CHART }"
+                app:title="@{ @string/navigation_chart }"
+                />
+            <include
+                layout="@layout/item_bottom_navigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:clickListener="@{ (v) -> listener.onClickInfo(v) }"
+                app:imgSrc="@{ itemSelected == BottomNavigation.INFOMATION ? @drawable/ic_bar_chart : @drawable/ic_bar_chart }"
+                app:isSelected="@{ itemSelected == BottomNavigation.INFOMATION }"
+                app:title="@{ @string/navigation_infomation }"
+                />
+            <include
+                layout="@layout/item_bottom_navigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:clickListener="@{ (v) -> listener.onClickProfile(v) }"
+                app:imgSrc="@{ itemSelected == BottomNavigation.PROFILE ? @drawable/ic_bar_chart : @drawable/ic_bar_chart }"
+                app:isSelected="@{ itemSelected == BottomNavigation.PROFILE }"
+                app:title="@{ @string/navigation_profile }"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,149 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdkVersion build_versions.target_sdk
+  buildToolsVersion build_versions.build_tools
+
+  defaultConfig {
+    applicationId "com.chuongvd.app.signal"
+    minSdkVersion build_versions.min_sdk
+    targetSdkVersion build_versions.target_sdk
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  dataBinding {
+    enabled = true
+  }
+
+  flavorDimensions "rocket"
+
+  productFlavors {
+    dev {
+      dimension "rocket"
+      //FIXME: set your facebook app id
+      resValue "string", "facebook_app_id", "1231231232132131234"
+      resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
+    }
+
+    product {
+      dimension "rocket"
+      resValue "string", "facebook_app_id", "1231231232132131234"
+      resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
+    }
+  }
+
+  applicationVariants.all { variant ->
+    def END_POINT, OS_TYPE
+    if (variant.getName().contains("dev")) {
+      END_POINT = "http://8.8.8.8:8080"
+    } else {
+      END_POINT = "http://8.8.8.8:8080"
+    }
+    OS_TYPE = "ANDROID"
+
+    variant.buildConfigField "String", "END_POINT", "\"${END_POINT}\""
+    variant.buildConfigField "String", "OS_TYPE", "\"${OS_TYPE}\""
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+  compileOptions {
+    targetCompatibility 1.8
+    sourceCompatibility 1.8
+  }
+
+}
+
+dependencies {
+  // Support libraries
+  implementation deps.support.app_compat
+  implementation deps.support.v4
+  implementation deps.support.design
+
+  // Architecture components
+  implementation deps.lifecycle.runtime
+  implementation deps.lifecycle.extensions
+  kapt deps.lifecycle.compiler
+  implementation deps.room.runtime
+  kapt deps.room.compiler
+  implementation deps.room.rxjava2
+
+  // RxJava
+  implementation deps.rx_android
+  implementation deps.rxjava2
+  implementation deps.retrofit.runtime
+  implementation deps.retrofit.gson
+  implementation deps.okhttp_logging_interceptor
+  implementation deps.retrofit2adapter
+
+  // kotlin
+  // Kotlin
+  implementation deps.kotlin.stdlib
+
+  //Facebook
+  implementation deps.facebook.runtime
+
+  //Firebase
+  implementation deps.firebase.core
+  implementation deps.firebase.messaging
+
+  // Dependencies for local unit tests
+  testImplementation deps.junit
+  testImplementation deps.mockito.all
+  testImplementation deps.hamcrest
+  testImplementation deps.arch_core.testing
+  testImplementation deps.kotlin.stdlib
+  testImplementation deps.kotlin.test
+
+  // Android Testing Support Library's runner and rules
+  androidTestImplementation deps.atsl.runner
+  androidTestImplementation deps.atsl.rules
+  androidTestImplementation deps.room.testing
+  androidTestImplementation deps.arch_core.testing
+
+  // Dependencies for Android unit tests
+  androidTestImplementation deps.junit
+  androidTestImplementation deps.mockito.core, { exclude group: 'net.bytebuddy' }
+  androidTestImplementation deps.dexmaker
+
+  // Espresso UI Testing
+  androidTestImplementation deps.espresso.core
+  androidTestImplementation deps.espresso.contrib
+  androidTestImplementation deps.espresso.intents
+
+  // Resolve conflicts between main and test APK:
+  androidTestImplementation deps.support.annotations
+  androidTestImplementation deps.support.v4
+  androidTestImplementation deps.support.app_compat
+  androidTestImplementation deps.support.design
+}
+
+apply plugin: 'com.google.gms.google-services'
