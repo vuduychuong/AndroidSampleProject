@@ -24,7 +24,7 @@ import android.content.Context;
  */
 public class BasicApp extends Application {
 
-    private static Context sSelf;
+    private static Application sSelf;
 
     @Override
     public void onCreate() {
@@ -32,7 +32,7 @@ public class BasicApp extends Application {
         sSelf = this;
     }
 
-    public static Context self() {
+    public static Application self() {
         return sSelf;
     }
 }

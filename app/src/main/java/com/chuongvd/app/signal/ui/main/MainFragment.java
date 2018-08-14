@@ -2,19 +2,20 @@ package com.chuongvd.app.signal.ui.main;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.ObservableInt;
-import android.view.View;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.chuongvd.app.signal.BasicApp;
 import com.chuongvd.app.signal.R;
-import com.chuongvd.app.signal.constant.BottomNavigation;
 import com.chuongvd.app.signal.databinding.FragmentHomeBinding;
-import com.chuongvd.app.signal.listener.BottomNavigationListener;
 import com.chuongvd.app.signal.ui.common.BaseDataBindingFragment;
+import com.chuongvd.app.signal.ui.main.sample.SampleFragment;
 import com.chuongvd.app.signal.viewmodel.HomeViewModel;
-import com.chuongvd.app.signal.widget.viewpager.CustomPagerAdapter;
+import com.chuongvd.app.signal.widget.viewpager.ItemNavigationFragment;
+import com.chuongvd.app.signal.widget.viewpager.NavigationSupportPagerAdapter;
 
 public class MainFragment extends BaseDataBindingFragment<FragmentHomeBinding, HomeViewModel>
-        implements BottomNavigationListener {
+        implements AHBottomNavigation.OnTabSelectedListener {
 
-    private CustomPagerAdapter mPagerAdapter;
+    private NavigationSupportPagerAdapter<ItemNavigationFragment> mPagerAdapter;
     private ObservableInt itemSelected = new ObservableInt();
 
     @Override
@@ -24,13 +25,25 @@ public class MainFragment extends BaseDataBindingFragment<FragmentHomeBinding, H
 
     @Override
     protected void initData() {
-        HomeViewModel.Factory factory = new HomeViewModel.Factory(getActivity().getApplication());
+        HomeViewModel.Factory factory = new HomeViewModel.Factory(BasicApp.self());
         mViewModel = ViewModelProviders.of(this, factory).get(HomeViewModel.class);
-        mPagerAdapter = new CustomPagerAdapter(getChildFragmentManager());
+        mPagerAdapter = new NavigationSupportPagerAdapter<>(getChildFragmentManager());
         // TODO: 7/29/18 Init PagerAdapter
-        mBinding.setBottomNavigationListener(this);
+        String title1 = "Menu 1";
+        mPagerAdapter.addFragment(new ItemNavigationFragment(title1, R.drawable.ic_bar_chart,
+                SampleFragment.newInstance(title1)));
+        String title2 = "Menu 2";
+        mPagerAdapter.addFragment(new ItemNavigationFragment(title2, R.drawable.ic_bar_chart,
+                SampleFragment.newInstance(title2)));
+        String title3 = "Menu 3";
+        mPagerAdapter.addFragment(new ItemNavigationFragment(title3, R.drawable.ic_bar_chart,
+                SampleFragment.newInstance(title3)));
+
         mBinding.setItemSelected(itemSelected);
         mBinding.setPagerAdapter(mPagerAdapter);
+        mPagerAdapter.setUpWithBottomNavigation(mBinding.bottomNavigation);
+        mBinding.bottomNavigation.setOnTabSelectedListener(this);
+        mBinding.bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
     }
 
     @Override
@@ -39,26 +52,9 @@ public class MainFragment extends BaseDataBindingFragment<FragmentHomeBinding, H
     }
 
     @Override
-    public void onClickHome(View v) {
-        if (itemSelected.get() == BottomNavigation.SIGNAL) return;
-        itemSelected.set(BottomNavigation.SIGNAL);
-    }
-
-    @Override
-    public void onClickChart(View v) {
-        if (itemSelected.get() == BottomNavigation.CHART) return;
-        itemSelected.set(BottomNavigation.CHART);
-    }
-
-    @Override
-    public void onClickInfo(View v) {
-        if (itemSelected.get() == BottomNavigation.INFOMATION) return;
-        itemSelected.set(BottomNavigation.INFOMATION);
-    }
-
-    @Override
-    public void onClickProfile(View v) {
-        if (itemSelected.get() == BottomNavigation.PROFILE) return;
-        itemSelected.set(BottomNavigation.PROFILE);
+    public boolean onTabSelected(int position, boolean wasSelected) {
+        if (wasSelected) return true;
+        itemSelected.set(position);
+        return true;
     }
 }

@@ -53,6 +53,7 @@ versions.navigation = "1.0.0-alpha01"
 versions.facebook = "[4,5)"
 versions.firebase = "16.0.0"
 versions.firebase_messaging = "17.1.0"
+versions.bottom_navigation = "2.1.0"
 def deps = [:]
 
 deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
@@ -172,6 +173,11 @@ def firebase = [:]
 firebase.core = "com.google.firebase:firebase-core:$versions.firebase"
 firebase.messaging = "com.google.firebase:firebase-messaging:$versions.firebase_messaging"
 deps.firebase = firebase
+
+//Custom UI
+def custom_ui = [:]
+custom_ui.bottom_navigation = "com.aurelhubert:ahbottomnavigation:$versions.bottom_navigation"
+deps.custom_ui = custom_ui
 
 ext.deps = deps
 

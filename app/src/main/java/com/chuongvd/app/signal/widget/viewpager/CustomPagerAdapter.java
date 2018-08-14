@@ -1,22 +1,24 @@
 package com.chuongvd.app.signal.widget.viewpager;
 
+import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomPagerAdapter extends FragmentStatePagerAdapter {
-    private List<ItemFragment> mItemFragmentList = new ArrayList<>();
+public class CustomPagerAdapter<ITEM_FRAGMENT extends ItemFragment>
+        extends FragmentStatePagerAdapter {
+
+    private List<ITEM_FRAGMENT> mItemFragmentList = new ArrayList<>();
 
     public CustomPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public CustomPagerAdapter(FragmentManager fm, @NonNull List<ItemFragment> itemFragmentList) {
+    public CustomPagerAdapter(FragmentManager fm, @NonNull List<ITEM_FRAGMENT> itemFragmentList) {
         super(fm);
         mItemFragmentList.clear();
         mItemFragmentList.addAll(itemFragmentList);
@@ -38,11 +40,11 @@ public class CustomPagerAdapter extends FragmentStatePagerAdapter {
         return mItemFragmentList.get(position).getTitle();
     }
 
-    public List<ItemFragment> getItemFragmentList() {
+    public List<ITEM_FRAGMENT> getItemFragmentList() {
         return mItemFragmentList;
     }
 
-    public int addFragment(ItemFragment itemFragment) {
+    public int addFragment(ITEM_FRAGMENT itemFragment) {
         mItemFragmentList.add(itemFragment);
         notifyDataSetChanged();
         return mItemFragmentList.size() - 1;

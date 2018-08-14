@@ -92,6 +92,9 @@ dependencies {
   implementation deps.firebase.core
   implementation deps.firebase.messaging
 
+  //Custom UI
+  implementation deps.custom_ui.bottom_navigation
+
   // Android Testing Support Library's runner and rules
   androidTestImplementation deps.atsl.runner
   androidTestImplementation deps.atsl.rules
