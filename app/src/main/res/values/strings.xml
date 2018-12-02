@@ -15,15 +15,8 @@
   -->
 
 <resources>
-    <string name="app_name">Rocket 4.0</string>
-    <string name="cd_products_list">Products list</string>
-    <string name="cd_comments_list">Comments list</string>
-    <string name="cd_product_name">Name of the product</string>
+    <string name="app_name">Example</string>
 
-    //Bottom natigation title
-    <string name="navigation_signal">Signal</string>
-    <string name="navigation_chart">Chart</string>
-    <string name="navigation_infomation">Info</string>
-    <string name="navigation_profile">Profile</string>
     <string name="no_data">Empty Data</string>
+    <string name="error_network">Check your connection and try again</string>
 </resources>

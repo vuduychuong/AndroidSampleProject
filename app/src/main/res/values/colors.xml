@@ -16,8 +16,29 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">@color/cobalt</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#dc0000</color>
+
+    <color name="greenish_teal">#34c88a</color>
+    <color name="text_color_2">#1e1e1e</color>
+    <color name="text_color">#232323</color>
+    <color name="brown_grey">#858585</color>
+    <color name="bluish">#1f71c3</color>
+    <color name="cobalt">#1f3a93</color>
+    <color name="black">#212121</color>
+    <color name="white">#ffffff</color>
+    <color name="white_two">#fafafa</color>
+    <color name="text_color_3">#343434</color>
+    <color name="very_light_pink">#d3d3d3</color>
+    <color name="black_61">#9c000000</color>
+    <color name="black_35">#59000000</color>
+    <color name="red">#dc0000</color>
+    <color name="fire_engine_red">#fa0004</color>
+    <color name="scarlet">#d80001</color>
+    <color name="soft_pink">#f0aeaf</color>
+    <color name="brown_grey_two">#aeaeae</color>
+    <color name="very_light_pink_two">#ececec</color>
+
 
 </resources>

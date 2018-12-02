@@ -5,7 +5,7 @@ android {
   buildToolsVersion build_versions.build_tools
 
   defaultConfig {
-    applicationId 'com.chuongvd.app.signal'
+    applicationId 'com.chuongvd.app.example'
     minSdkVersion build_versions.min_sdk
     targetSdkVersion build_versions.target_sdk
     versionCode 1
@@ -23,18 +23,18 @@ android {
     enabled = true
   }
 
-  flavorDimensions "rocket"
+  flavorDimensions "example"
 
   productFlavors {
     dev {
-      dimension "rocket"
+      dimension "example"
       //FIXME: set your facebook app id
       resValue "string", "facebook_app_id", "1231231232132131234"
       resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
     }
 
     product {
-      dimension "rocket"
+      dimension "example"
       resValue "string", "facebook_app_id", "1231231232132131234"
       resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
     }
@@ -67,8 +67,13 @@ dependencies {
   // Support libraries
   implementation deps.support.app_compat
   implementation deps.support.v4
+  implementation deps.support.recyclerview
   implementation deps.support.design
   implementation deps.support.cardview
+  implementation deps.constraint_layout
+
+  implementation project(path: ':awesomehomepage')
+  implementation project(path: ':adapterbinding')
 
   // Architecture components
   implementation deps.lifecycle.runtime
@@ -77,7 +82,7 @@ dependencies {
   implementation deps.room.runtime
   annotationProcessor deps.room.compiler
 
-  //Retrofit & RxJava
+  //Retrofit
   implementation deps.retrofit.runtime
   implementation deps.retrofit.gson
   implementation deps.okhttp_logging_interceptor

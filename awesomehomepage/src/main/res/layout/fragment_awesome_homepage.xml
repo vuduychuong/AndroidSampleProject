@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="pagerAdapter"
+            type="android.support.v4.view.PagerAdapter"
+            />
+        <variable
+            name="itemSelected"
+            type="android.databinding.ObservableInt"
+            />
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        >
+        <com.chuongvd.awesomehomepage.widget.viewpager.CustomViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:is_disable_smooth="true"
+            app:is_disable_swipe="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:offScreenLimit="@{ 3 }"
+            app:pagerAdapter="@{ pagerAdapter }"
+            app:selectedPosition="@{ itemSelected }"
+            />
+
+        <com.chuongvd.awesomehomepage.widget.viewpager.CustomBottomNavigation
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
