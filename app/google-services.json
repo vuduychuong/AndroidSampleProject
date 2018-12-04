@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:776095309122:android:e11c00db07e049a3",
         "android_client_info": {
-          "package_name": "com.chuongvd.app.signal"
+          "package_name": "com.chuongvd.app.example"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "776095309122-sub7h6140o3vgv9uu99qeak2fatt0uie.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.chuongvd.app.signal",
+            "package_name": "com.chuongvd.app.example",
             "certificate_hash": "0353aabc21fce988936eee838b03e0700e7ed2ec"
           }
         },

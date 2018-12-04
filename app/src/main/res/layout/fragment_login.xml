@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:src="@mipmap/ic_launcher"
             />
-        <com.chuongvd.app.signal.widget.CustomButton
+        <com.chuongvd.app.example.widget.CustomButton
             android:id="@+id/btn_login"
             android:layout_width="@dimen/auto_dp_248"
             android:layout_height="@dimen/auto_dp_48"

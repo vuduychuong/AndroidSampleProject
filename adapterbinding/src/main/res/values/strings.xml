@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Binding Adapter</string>
+    <string name="no_data">Data Empty</string>
+</resources>
