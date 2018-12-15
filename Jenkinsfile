@@ -31,12 +31,12 @@ node {
             switch (env.BRANCH_NAME) {
                 case "master":
                     sh("env >> .env")
-                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleRelease crashlyticsUploadDistributionRelease")
+                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleRelease")
                     sh("rm -rf .env")
                     break
                 case "dev":
                     sh("env >> .env")
-                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleDebug crashlyticsUploadDistributionDebug")
+                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleDebug")
                     sh("rm -rf .env")
                     break
                 case "master-java":
