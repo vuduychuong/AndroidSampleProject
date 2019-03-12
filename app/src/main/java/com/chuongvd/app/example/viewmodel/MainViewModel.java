@@ -4,9 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-public class HomeViewModel extends AndroidViewModel {
+public class MainViewModel extends AndroidViewModel {
 
-    HomeViewModel(@NonNull Application application) {
+    MainViewModel(@NonNull Application application) {
         super(application);
     }
 }

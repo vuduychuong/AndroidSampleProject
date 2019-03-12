@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.databinding.ViewDataBinding;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -33,6 +34,14 @@ public abstract class DataBindingActivity<B extends ViewDataBinding, V extends A
         super.onCreate(savedInstanceState);
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         context().registerReceiver(mNetworkReceiver, filter);
+    }
+
+    private void checkScreenOrientation() {
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
     }
 
     @Override

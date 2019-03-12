@@ -24,8 +24,8 @@ public class SampleFragment
     }
 
     @Override
-    public Context context() {
-        return getContext();
+    protected void initListeners() {
+        // TODO: 3/12/19
     }
 
     @Override

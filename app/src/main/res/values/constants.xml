@@ -6,4 +6,5 @@
         <item>user_friends</item>
         <item>email</item>
     </string-array>
+    <bool name="portrait_only">true</bool>
 </resources>

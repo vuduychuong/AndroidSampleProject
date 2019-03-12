@@ -1,7 +1,6 @@
 package com.chuongvd.app.example.ui.auth.login;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
@@ -34,8 +33,8 @@ public class LoginFragment extends DataBindingFragment<FragmentLoginBinding, Log
     }
 
     @Override
-    public Context context() {
-        return getContext();
+    protected void initListeners() {
+        // TODO: 3/12/19
     }
 
     @Override

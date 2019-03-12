@@ -2,46 +2,38 @@ package com.chuongvd.app.example.ui.main;
 
 import android.content.Context;
 import com.chuongvd.app.example.R;
-import com.chuongvd.app.example.ui.main.sample.SampleFragment;
-import com.chuongvd.awesomehomepage.ui.BaseAwesomeHomepageFragment;
-import com.chuongvd.awesomehomepage.widget.viewpager.CustomBottomNavigation;
-import com.chuongvd.awesomehomepage.widget.viewpager.ItemNavigationFragment;
-import com.chuongvd.awesomehomepage.widget.viewpager.NavigationSupportPagerAdapter;
+import com.chuongvd.app.example.databinding.FragmentMainBinding;
+import com.chuongvd.app.example.ui.common.DataBindingFragment;
+import com.chuongvd.app.example.viewmodel.MainViewModel;
 
-public class MainFragment extends BaseAwesomeHomepageFragment<ItemNavigationFragment> {
+public class MainFragment extends DataBindingFragment<FragmentMainBinding, MainViewModel> {
 
-    @Override
-    public void initAdapter(NavigationSupportPagerAdapter<ItemNavigationFragment> adapter) {
-        String title1 = "Item 1";
-        adapter.addFragment(new ItemNavigationFragment(title1, R.drawable.ic_radio,
-                SampleFragment.newInstance(title1)));
-        String title2 = "Item 2";
-        adapter.addFragment(new ItemNavigationFragment(title2, R.drawable.ic_radio,
-                SampleFragment.newInstance(title2)));
-        String title3 = "Item 3";
-        adapter.addFragment(new ItemNavigationFragment(title3, R.drawable.ic_radio,
-                SampleFragment.newInstance(title3)));
-        String title4 = "Item 4";
-        adapter.addFragment(new ItemNavigationFragment(title4, R.drawable.ic_radio,
-                SampleFragment.newInstance(title4)));
-        String title5 = "Item 5";
-        adapter.addFragment(new ItemNavigationFragment(title5, R.drawable.ic_radio,
-                SampleFragment.newInstance(title5)));
+    public static MainFragment newInstance() {
+        return new MainFragment();
     }
 
     @Override
-    protected void stylingBottomNavigation(CustomBottomNavigation bottomNavigation) {
-        super.stylingBottomNavigation(bottomNavigation);
-    }
-
-    @Override
-    public boolean onTabSelected(int position, boolean wasSelected) {
-        mCustomBottomNavigation.setNotification("", position);
-        return super.onTabSelected(position, wasSelected);
+    protected int getContentViewLayoutId() {
+        return R.layout.fragment_main;
     }
 
     @Override
     public Context context() {
         return getContext();
+    }
+
+    @Override
+    protected void initListeners() {
+        // TODO: 3/12/19
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void subscribeToViewModel() {
+
     }
 }

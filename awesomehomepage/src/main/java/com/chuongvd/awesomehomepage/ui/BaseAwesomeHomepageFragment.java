@@ -26,17 +26,17 @@ import com.chuongvd.awesomehomepage.widget.viewpager.NavigationSupportPagerAdapt
 public abstract class BaseAwesomeHomepageFragment<ITEM_FRAGMENT extends ItemFragment>
         extends BaseDataBindingFragment<ViewDataBinding, AwesomeHomepageViewModel>
         implements AHBottomNavigation.OnTabSelectedListener {
-    private static final String ACTION_CHANGE_BADGE = "action_change_badge";
-    private static final String BADGE_POSITION = "badge_position";
-    private static final String BADGE_VALUE = "badge_value";
+    protected static final String ACTION_CHANGE_BADGE = "action_change_badge";
+    protected static final String BADGE_POSITION = "badge_position";
+    protected static final String BADGE_VALUE = "badge_value";
 
     protected CustomBottomNavigation mCustomBottomNavigation;
 
-    private NavigationSupportPagerAdapter<ITEM_FRAGMENT> mPagerAdapter;
-    private ObservableInt itemSelected = new ObservableInt();
-    private BroadcastReceiver mReceiver;
-    private IntentFilter mIntentFilter;
-    private FragmentAwesomeHomepageBinding binding;
+    protected NavigationSupportPagerAdapter<ITEM_FRAGMENT> mPagerAdapter;
+    protected ObservableInt itemSelected = new ObservableInt();
+    protected BroadcastReceiver mReceiver;
+    protected IntentFilter mIntentFilter;
+    protected FragmentAwesomeHomepageBinding binding;
 
     public static void sendBroadcastChangeBadge(Context context, int position, String value) {
         Intent intent = new Intent(ACTION_CHANGE_BADGE);
@@ -71,10 +71,14 @@ public abstract class BaseAwesomeHomepageFragment<ITEM_FRAGMENT extends ItemFrag
                 if (intent == null) return;
                 int position = intent.getIntExtra(BADGE_POSITION, -1);
                 String value = intent.getStringExtra(BADGE_VALUE);
-                if (position == -1
-                        || position > binding.bottomNavigation.getItemsCount()
-                        || TextUtils.isEmpty(value)) {
+                if (position == -1 || position > binding.bottomNavigation.getItemsCount()) {
                     return;
+                }
+                try {
+                    int intValue = Integer.parseInt(value);
+                    if (intValue > 9) value = "9+";
+                } catch (NumberFormatException ignored) {
+
                 }
                 binding.bottomNavigation.setNotification(value, position);
             }

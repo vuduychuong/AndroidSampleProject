@@ -19,9 +19,13 @@ public abstract class BaseDataBindingFragment<B extends ViewDataBinding, V exten
 
     protected V mViewModel;
 
-    public abstract int getContentViewLayoutId();
+    protected abstract int getContentViewLayoutId();
 
-    public abstract Context context();
+    protected Context context() {
+        return getContext();
+    }
+
+    protected abstract void initListeners();
 
     protected abstract void initData();
 
@@ -44,6 +48,7 @@ public abstract class BaseDataBindingFragment<B extends ViewDataBinding, V exten
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initListeners();
         initData();
         subscribeToViewModel();
     }

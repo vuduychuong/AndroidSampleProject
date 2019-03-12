@@ -1,4 +1,4 @@
-package com.chuongvd.app.example.ui;
+package com.chuongvd.app.example.ui.common;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;

@@ -25,7 +25,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding, Andro
 
     @Override
     protected void initData() {
-        MainFragment fragment = new MainFragment();
+        MainFragment fragment = MainFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment, MainFragment.class.getName())
                 .commit();

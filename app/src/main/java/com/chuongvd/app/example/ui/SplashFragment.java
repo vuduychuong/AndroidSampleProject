@@ -1,7 +1,6 @@
 package com.chuongvd.app.example.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Handler;
 import com.chuongvd.app.example.R;
 import com.chuongvd.app.example.databinding.FragmentSplashBinding;
@@ -21,8 +20,8 @@ public class SplashFragment extends DataBindingFragment<FragmentSplashBinding, S
     }
 
     @Override
-    public Context context() {
-        return getContext();
+    protected void initListeners() {
+        // TODO: 3/12/19
     }
 
     @Override
@@ -30,11 +29,12 @@ public class SplashFragment extends DataBindingFragment<FragmentSplashBinding, S
         mViewModel = ViewModelProviders.of(this, ViewModelFactory.getInstance())
                 .get(SplashViewModel.class);
         new Handler().postDelayed(() -> {
-            if (mViewModel.isValidUser()) {
-                goToMain();
-            } else {
-                goToLogin();
-            }
+            goToMain();
+            //            if (mViewModel.isValidUser()) {
+            //                goToMain();
+            //            } else {
+            //                goToLogin();
+            //            }
         }, DELAY_TIME);
     }
 

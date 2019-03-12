@@ -3,6 +3,7 @@ package com.chuongvd.awesomehomepage.common;
 import android.databinding.BindingAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 
 public class BindingAdapters {
 
@@ -36,5 +37,18 @@ public class BindingAdapters {
         if (null == viewPager.getAdapter()) return;
         if (viewPager.getAdapter().getCount() <= selectedPosition) return;
         viewPager.setCurrentItem(selectedPosition);
+    }
+
+    /***
+     * Set position for AHBottomNavigation
+     * @param bottomNavigation
+     * @param selectedPosition
+     */
+    @BindingAdapter(value = { "selectedPosition" }, requireAll = false)
+    public static void setNavigationPosition(AHBottomNavigation bottomNavigation, int selectedPosition) {
+        if (selectedPosition < 0) return;
+        if (bottomNavigation == null) return;
+        if (bottomNavigation.getItemsCount() <= selectedPosition) return;
+        bottomNavigation.setCurrentItem(selectedPosition);
     }
 }

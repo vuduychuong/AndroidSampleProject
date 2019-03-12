@@ -20,4 +20,9 @@ public class AwesomeHomepageFragment<ITEM_FRAGMENT extends ItemFragment> extends
     public Context context() {
         return null;
     }
+
+    @Override
+    protected void initListeners() {
+
+    }
 }
