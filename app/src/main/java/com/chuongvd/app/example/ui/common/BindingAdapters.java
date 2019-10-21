@@ -53,7 +53,7 @@ public class BindingAdapters {
      */
     @BindingAdapter(value = {
             "pagerAdapter", "onPagerChangeListener", "offScreenLimit"
-    }, requireAll = false)
+            }, requireAll = false)
     public static void setPagerAdapter(ViewPager viewPager, PagerAdapter adapter,
             ViewPager.OnPageChangeListener onPageChangeListener, int offScreen) {
         viewPager.setAdapter(adapter);
@@ -88,7 +88,7 @@ public class BindingAdapters {
      */
     @BindingAdapter(value = {
             "adapter", "columns", "orientation", "itemDecoration", "space", "includeEdge", "reverse"
-    }, requireAll = false)
+            }, requireAll = false)
     public static void setRecyclerViewData(RecyclerView recyclerView, RecyclerView.Adapter adapter,
             int columns, int orientation, RecyclerView.ItemDecoration itemDecoration,
             @DimenRes int space, boolean includeEdge, boolean isReverse) {

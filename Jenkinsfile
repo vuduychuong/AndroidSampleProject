@@ -25,7 +25,7 @@ node {
             sh("docker run --env-file .env --rm ${project} ./gradlew test")
             sh("rm -rf .env")
         }
-
+``
         stage('Deploy application') {
             // This is the cool part where you deploy. Here, you can specify builds you want to deploy
             switch (env.BRANCH_NAME) {
@@ -37,6 +37,11 @@ node {
                 case "dev":
                     sh("env >> .env")
                     sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleDebug")
+                    sh("rm -rf .env")
+                    break
+                case "product":
+                    sh("env >> .env")
+                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleProduct")
                     sh("rm -rf .env")
                     break
                 case "master-java":

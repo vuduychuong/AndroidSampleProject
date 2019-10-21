@@ -5,8 +5,7 @@ import static com.chuongvd.app.example.data.source.remote.service.RequestStatus.
 import static com.chuongvd.app.example.data.source.remote.service.RequestStatus.SUCCESS;
 
 public class Resource<T> {
-    public @RequestStatus
-    int status;
+    public @RequestStatus int status;
     public T data;
     public String message;
     public PagingInfo mPagingInfo;

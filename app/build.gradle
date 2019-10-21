@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply from: "$project.rootDir/tools/findbugs.gradle"
+apply from: "$project.rootDir/tools/checkstyle.gradle"
+apply from: "$project.rootDir/tools/pmd.gradle"
 
 android {
   compileSdkVersion build_versions.target_sdk
@@ -28,6 +31,8 @@ android {
   productFlavors {
     dev {
       dimension "example"
+      applicationIdSuffix ".dev"
+      resValue('string', 'app_name', 'Dev-Example')
       //FIXME: set your facebook app id
       resValue "string", "facebook_app_id", "1231231232132131234"
       resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
@@ -35,6 +40,7 @@ android {
 
     product {
       dimension "example"
+      resValue('string', 'app_name', 'Example')
       resValue "string", "facebook_app_id", "1231231232132131234"
       resValue "string", "fb_login_protocol_scheme", "fb1231231232132131234"
     }
