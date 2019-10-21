@@ -37,7 +37,7 @@ public class AppExecutors {
 
     private final Executor mMainThread;
 
-    private static AppExecutors sInstance;
+    private static volatile AppExecutors sInstance;
 
     private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
         this.mDiskIO = diskIO;
